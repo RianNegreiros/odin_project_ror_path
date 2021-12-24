@@ -1,4 +1,4 @@
-# Projects [from The Odin Project FULL STACK RUBY ON RAILS path](https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby-programming)
+# Projects from The Odin Project [FULL STACK RUBY ON RAILS](https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby-programming) path
 
 This path takes you through our entire Ruby on Rails curriculum. The courses should be taken in the order that they are displayed. You'll learn everything you need to know to create beautiful responsive websites from scratch.
 
