@@ -1,4 +1,4 @@
-CODE = %w[1 2 3 4].freeze
+CODE = 4.times.map { Random.rand(1..9).to_s }
 guess = ''
 attempts = 1
 MAX_ATTEMPTS = 12
