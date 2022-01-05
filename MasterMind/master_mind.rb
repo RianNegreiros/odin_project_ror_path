@@ -20,6 +20,8 @@ while quess != CODE && attempts <= MAX_ATTEMPTS
   if quess[3] == CODE[3]
     number_correct += 1
   end
+
+  print "\nYou got #{number_correct} correct.\n"
   attempts += 1
 end
 
