@@ -1116,7 +1116,7 @@ the template using the same File tools we used at the beginning of the exercise.
 Within our application we will load our template:
 
 ```ruby
-template_letter = File.read('form_letter.html')
+template_letter = File.read('form_letter.erb')
 ```
 
 It is important to define the `form_letter.html` file in the root of project
@@ -1147,7 +1147,7 @@ change the original template, they'd all have the same name! By making a copy
 and then changing the copy, we're sure everyone's name is unique.
 
 ```ruby
-template_letter = File.read('form_letter.html')
+template_letter = File.read('form_letter.erb')
 
 contents.each do |row|
   name = row[:first_name]
