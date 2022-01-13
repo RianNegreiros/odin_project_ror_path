@@ -20,14 +20,6 @@ def  legislator_by_zipcode(zip)
   end
 end
 
-def clean_phone_number(phone_number)
-  if phone_number.start_with? "1"
-    phone_number.slice!(0)
-  end
-
-  phone_number.to_s.gsub(/\D+/, "").rjust(10, "0")
-end
-
 def save_thank_you_letter(id,form_letter)
   Dir.mkdir('output') unless Dir.exist?('output')
 
@@ -38,12 +30,26 @@ def save_thank_you_letter(id,form_letter)
   end
 end
 
+def clean_phone_number(phone_number)
+  if phone_number.start_with? "1"
+    phone_number.slice!(0)
+  end
+
+  phone_number.to_s.gsub(/\D+/, "").rjust(10, "0")
+end
+
+def time_targeting(array)
+  array.max_by { |i| array.count(i)}
+end
+
 puts "Event Manager Initialized!"
 
 contents = CSV.open('event_attendees.csv', headers: true, header_converters: :symbol)
 
-  template_letter = File.read('form_letter.erb')
-  erb_template = ERB.new template_letter
+template_letter = File.read('form_letter.erb')
+erb_template = ERB.new template_letter
+
+hours_array = Array.new
 
 contents.each do |row|
   id = row[0]
@@ -56,4 +62,7 @@ contents.each do |row|
 
   #save_thank_you_letter(id, form_letter)
 
+  hours_array.append(row[:regdate][-5..-1].strip)
 end
+
+puts time_targeting(hours_array)
