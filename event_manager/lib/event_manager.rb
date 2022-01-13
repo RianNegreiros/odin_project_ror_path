@@ -50,6 +50,7 @@ template_letter = File.read('form_letter.erb')
 erb_template = ERB.new template_letter
 
 hours_array = Array.new
+days_array = Array.new
 
 contents.each do |row|
   id = row[0]
@@ -57,12 +58,17 @@ contents.each do |row|
   zipcode = clean_zipcode(row[:zipcode])
   legislators = legislator_by_zipcode(zipcode)
   phone_number = clean_phone_number(row[:homephone])
+  hour = DateTime.strptime(row[:regdate],"%m/%d/%y %H:%M").hour
+  week_day = DateTime.strptime(row[:regdate],"%m/%d/%y %H:%M").wday
 
   form_letter = erb_template.result(binding)
 
   #save_thank_you_letter(id, form_letter)
 
-  hours_array.append(row[:regdate][-5..-1].strip)
+  hours_array.append(hour)
+
+  days_array.append(week_day)
 end
 
-puts time_targeting(hours_array)
+puts "Hour: #{time_targeting(hours_array)}"
+puts "Day of the week: #{time_targeting(days_array)}"
