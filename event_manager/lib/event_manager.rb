@@ -45,5 +45,12 @@ contents.each do |row|
 
   form_letter = erb_template.result(binding)
 
-  save_thank_you_letter(id, form_letter)
+  #save_thank_you_letter(id, form_letter)
+
+  home_phone = row[:homephone].to_s.gsub(/\D+/, "").rjust(10, "0")
+
+  if home_phone.start_with? "1"
+    home_phone.slice!(0)
+  end
+
 end
