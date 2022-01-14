@@ -17,8 +17,17 @@ end
 
 def print_word(values)
   print("\t")
-  for x in values
+  values.each { |x|
     print(x)
-  end
+  }
   print("\t")
+end
+
+def check_win(values)
+  values.each { |char|
+    if char == '_'
+      return false
+    end
+  }
+  true
 end
