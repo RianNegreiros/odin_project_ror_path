@@ -14,3 +14,11 @@ def select_random_word
 
   random_word
 end
+
+def print_word(values)
+  print("\t")
+  for x in values
+    print(x)
+  end
+  print("\t")
+end
