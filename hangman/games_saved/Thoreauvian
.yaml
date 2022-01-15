@@ -1,6 +1,0 @@
---- !ruby/object:Hangman_Game
-word_display: []
-correct_letters: []
-incorrect: []
-chances: 0
-limit: 5

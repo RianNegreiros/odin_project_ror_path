@@ -97,8 +97,9 @@ class Hangman_Game
   end
 end
 
-def save_game(game_to_save, save_name)
+def save_game(game_to_save)
+  save_name = gets.chomp
   game_yaml = YAML.dump(game_to_save)
   Dir.mkdir("games_saved") unless Dir.exist?("games_saved")
-  File.open("games_saved/#{save_name}.yaml", "w") { |file| file.write game_yaml }
+  File.open(File.join(Dir.pwd, "/games_saved/#{save_name}.yaml"), 'w') { |file| file.write game_yaml }
 end
