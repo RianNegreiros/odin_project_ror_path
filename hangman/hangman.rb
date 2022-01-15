@@ -48,10 +48,10 @@ class Hangman_Game
     true
   end
 
-  def save_game(game_to_save)
+  def save_game
     print("\nEnter the name of the save: ")
     save_name = gets.chomp
-    game_yaml = YAML.dump(game_to_save)
+    game_yaml = YAML.dump(self)
     Dir.mkdir("games_saved") unless Dir.exist?("games_saved")
     File.open(File.join(Dir.pwd, "/games_saved/#{save_name}.yaml"), 'w') { |file| file.write game_yaml }
   end
@@ -82,7 +82,7 @@ class Hangman_Game
       input = gets.chomp
 
       if input == "save"
-        save_game(self)
+        save_game
         break
       end
 
@@ -126,3 +126,6 @@ class Hangman_Game
     end
   end
 end
+
+a = Hangman_Game.new
+a.hangman
