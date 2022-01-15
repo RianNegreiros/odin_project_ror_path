@@ -127,5 +127,4 @@ class Hangman_Game
   end
 end
 
-a = Hangman_Game.new
-a.hangman
+Hangman_Game.new.hangman
