@@ -1,3 +1,11 @@
+require "yaml"
+
+class String
+  def numeric?
+    Float(self) != nil rescue false
+  end
+end
+
 def select_random_word
   dictionary = File.open("5desk.txt")
 
@@ -56,14 +64,14 @@ def hangman(word)
     if input.length != 1
       print("Only one letter.")
       next
-    elsif not input.match? /\A[a-zA-Z'-]*\z/
+    elsif input.numeric?
       print("Must be a letter.")
-    elsif incorrect.upcase.include? input
-      print("Already tried")
+    elsif incorrect.include? input.upcase
+      print("Already tried this letter")
       next
     end
 
-    if correct_letters.upcase.include?(input) == false
+    if correct_letters.include?(input.upcase) == false
       incorrect.append(input.upcase)
 
       chances += 1
