@@ -103,3 +103,10 @@ def save_game(game_to_save)
   Dir.mkdir("games_saved") unless Dir.exist?("games_saved")
   File.open(File.join(Dir.pwd, "/games_saved/#{save_name}.yaml"), 'w') { |file| file.write game_yaml }
 end
+
+def load_game(save_name)
+  save = File.open(File.join(Dir.pwd, "/games_saved/#{save_name}.yaml"), 'r')
+  game = YAML.load(save)
+  save.close
+  game
+end
