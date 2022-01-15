@@ -98,13 +98,18 @@ class Hangman_Game
 end
 
 def save_game(game_to_save)
+  print("\nEnter the name of the save: ")
   save_name = gets.chomp
   game_yaml = YAML.dump(game_to_save)
   Dir.mkdir("games_saved") unless Dir.exist?("games_saved")
   File.open(File.join(Dir.pwd, "/games_saved/#{save_name}.yaml"), 'w') { |file| file.write game_yaml }
 end
 
-def load_game(save_name)
+def load_game
+  print("\nGames saved\n")
+  Dir.foreach('games_saved') { |file| puts File.basename(file, ".*") }
+  print("\nEnter the name of the save you to load: ")
+  save_name = gets.chomp
   save = File.open(File.join(Dir.pwd, "/games_saved/#{save_name}.yaml"), 'r')
   game = YAML.load(save)
   save.close
