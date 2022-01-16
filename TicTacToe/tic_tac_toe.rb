@@ -14,7 +14,7 @@ class Player < Person
     @sign = sign
   end
 
-  def print()
+  def print
     puts "Name: #{@name}, Sign: #{@sign}"
   end
 end

@@ -1,6 +1,5 @@
-def caesar_cipher plaintext, factor
+def caesar_cipher(plaintext, factor)
   codepoints_array = []
-  ciphertext = ""
 
   a_codepoint = 'a'.ord
 
