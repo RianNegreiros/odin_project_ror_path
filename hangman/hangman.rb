@@ -51,6 +51,7 @@ class Hangman_Game
   def save_game
     print("\nEnter the name of the save: ")
     save_name = gets.chomp
+    save_name = select_random_word if save_name.empty?
     game_yaml = YAML.dump(self)
     Dir.mkdir("games_saved") unless Dir.exist?("games_saved")
     File.open(File.join(Dir.pwd, "/games_saved/#{save_name}.yaml"), 'w') { |file| file.write game_yaml }
