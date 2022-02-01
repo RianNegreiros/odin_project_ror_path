@@ -21,7 +21,7 @@ class MasterMind
     [correct_position, correct_value]
   end
 
-  print "Welcome to MasterMind! You will need to guess a #{CODE.length} digit secret code.\n"
+  print "Welcome to master_mind! You will need to guess a #{CODE.length} digit secret code.\n"
   print "The code will contain digits from #{MIN} to #{MAX}."
 
   while guess != CODE && attempts <= MAX_ATTEMPTS
