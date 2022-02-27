@@ -19,4 +19,15 @@ class Array
       self
     end
   end
+
+  def my_each_with_index
+    i = 0
+    while i < self.length
+      yield [self[i], i]
+      i += 1
+    end
+    if block_given?
+      self
+    end
+  end
 end
