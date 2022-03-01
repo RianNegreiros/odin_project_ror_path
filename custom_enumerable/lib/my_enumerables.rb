@@ -63,4 +63,18 @@ class Array
     true
   end
 
+  def my_count(&block)
+    result = 0
+    if !block_given?
+      result = self.length
+    elsif block_given?
+      self.my_each do |i|
+        if yield i
+          result += 1
+        end
+      end
+    end
+    result
+  end
+
 end
