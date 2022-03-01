@@ -56,4 +56,11 @@ class Array
     false
   end
 
+  def my_none?(&block)
+    self.my_each do |i|
+      return false if yield i
+    end
+    true
+  end
+
 end
