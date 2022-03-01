@@ -77,4 +77,12 @@ class Array
     result
   end
 
+  def my_map(&block)
+    result = []
+    self.my_each do |i|
+      result << yield(i)
+    end
+    result
+  end
+
 end
