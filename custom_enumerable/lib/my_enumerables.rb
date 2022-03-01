@@ -30,4 +30,13 @@ class Array
       self
     end
   end
+
+  def my_select(&block)
+    result = []
+    self.my_each do |i|
+      result << el if block.call(el) == true
+    end
+    result
+  end
+
 end
