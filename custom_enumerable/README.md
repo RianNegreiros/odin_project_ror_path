@@ -79,6 +79,7 @@ The following table has the methods you will need to implement along with their 
 | `Enumerable#my_inject`          | spec/my_inject_spec.rb          |                                                                       |
 
 ### (Beta) New Assignment
+
 We have created a new repo where you can rebuild the enumerable methods and check they work as expected by running predefined tests against them.
 
 1. Fork and clone our [custom enumerables repo](https://github.com/TheOdinProject/custom_enumerable_project)
@@ -87,6 +88,7 @@ We have created a new repo where you can rebuild the enumerable methods and chec
 4. (Optional) Let us know what you think of the new approach to this project in our [Ruby on Rails channel on Discord](https://discord.com/channels/505093832157691914/690591236922409012). We’d love to have your feedback!
 
 ### Old Assignment
+
 This project is a great opportunity to get comfortable using [yield](https://www.rubyguides.com/2019/12/yield-keyword/) and the [#call](https://ruby-doc.org/core-2.5.3/Method.html#method-i-call) methods.
 
 For this assignment, you will add your new methods onto the existing Enumerable module. Ruby makes this easy for you because any class or module can be modified by doing something like this:
