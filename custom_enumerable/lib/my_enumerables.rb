@@ -77,6 +77,18 @@ class Array
     result
   end
 
+  def my_inject(initial=nil)
+    acc = initial
+    self.my_each do |i|
+      if acc.nil?
+        acc = i
+      else
+        acc = yield(acc, i)
+      end
+    end
+    acc
+  end
+
   def my_map(&block)
     result = []
     self.my_each do |i|
