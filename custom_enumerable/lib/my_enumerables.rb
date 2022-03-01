@@ -39,4 +39,14 @@ class Array
     result
   end
 
+  def my_all?(&block)
+    result = true
+    self.my_each do |i|
+      if yield(i) == false
+        result = false
+      end
+    end
+    result
+  end
+
 end
