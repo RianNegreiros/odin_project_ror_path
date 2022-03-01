@@ -49,4 +49,11 @@ class Array
     result
   end
 
+  def my_any?(&block)
+    self.my_each do |i|
+      return true if yield i
+    end
+    false
+  end
+
 end
