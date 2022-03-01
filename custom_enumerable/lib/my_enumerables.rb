@@ -34,7 +34,7 @@ class Array
   def my_select(&block)
     result = []
     self.my_each do |i|
-      result << el if block.call(el) == true
+      result << i if block.call(i) == true
     end
     result
   end
