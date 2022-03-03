@@ -13,9 +13,9 @@ puts fibs(8)
 def fibs_rec(n)
   return [0, 1] if n == 2
 
-  seq = fib_rec(n - 1)
+  seq = fibs_rec(n - 1)
 
   seq << seq[-2] + seq[-1]
 end
 
-puts fib_rec(8)
+puts fibs_rec(8)
