@@ -15,7 +15,7 @@ class LinkedList
     while curr_node.next_node != nil
       curr_node = curr_node.next_node
     end
-    curr_node.next_node = Node.new(value, nil)
+    curr_node.next_node = Node.new(value)
   end
 
   # adds a new node containing value to the start of the list
