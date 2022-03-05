@@ -46,9 +46,9 @@ class LinkedList
 
   def tail
     curr_node = @head
-    return curr_node if node.next.nil?
+    return curr_node if node.next_node.nil?
     
-    while(!curr_node.next_node.nil?)
+    while(!curr_node.next_node_node.nil?)
       curr_node = curr_node.next_node
     end
     curr_node
@@ -57,7 +57,7 @@ class LinkedList
   def at(index)
     curr_node = @head
     # Throw exception
-    return nil if node.next.nil?
+    return nil if node.next_node.nil?
 
     index.times do 
       curr_node = curr_node.next_node
@@ -77,7 +77,7 @@ class LinkedList
     curr_node = @head
     while(!curr_node.nil?)
       return true if curr_node.value == value
-      return false if !curr_node.next.nil?
+      return false if !curr_node.next_node.nil?
       curr_node = curr_node.next_node
     end
   end
@@ -86,7 +86,7 @@ class LinkedList
     curr_node = @head
     while(!curr_node.nil?)
       return curr_node if curr_node.value == value
-      return false if !curr_node.next.nil?
+      return false if !curr_node.next_node.nil?
       curr_node = curr_node.next_node
     end
   end
@@ -105,7 +105,7 @@ class LinkedList
   def insert_at(value, index)
     curr_node = @head
     # Throw exception
-    return nil if node.next.nil?
+    return nil if curr_node.next_node.nil?
 
     index.times do 
       curr_node = curr_node.next_node
