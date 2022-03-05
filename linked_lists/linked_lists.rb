@@ -81,4 +81,13 @@ class LinkedList
       curr_node = curr_node.next_node
     end
   end
+
+  def find(value)
+    curr_node = @head
+    while(!curr_node.nil?)
+      return curr_node if curr_node.value == value
+      return false if !curr_node.next.nil?
+      curr_node = curr_node.next_node
+    end
+  end
 end
