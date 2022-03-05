@@ -12,10 +12,10 @@ class LinkedList
     # adds a new node containing value to the end of the list
   def append(value)
     curr_node = @head
-    while curr_node.next != nil
-      curr_node = curr_node.next
+    while curr_node.next_node != nil
+      curr_node = curr_node.next_node
     end
-    curr_node.next = Node.new(value, nil)
+    curr_node.next_node = Node.new(value, nil)
   end
 
   # adds a new node containing value to the start of the list
@@ -23,7 +23,7 @@ class LinkedList
     return @head = Node.new(value) if @head.nil?
 
       curr_node = Node.new(value)
-      curr_node.next = @head
+      curr_node.next_node = @head
       @head = curr_head
   end
 
@@ -33,8 +33,8 @@ class LinkedList
 
     count += 1
     curr_node = @head
-    while curr_node.next != nil
-      curr_node = curr_node.next
+    while curr_node.next_node != nil
+      curr_node = curr_node.next_node
       count += 1
     end
     count
