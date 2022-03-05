@@ -33,7 +33,7 @@ class LinkedList
 
     count += 1
     curr_node = @head
-    while curr_node.next_node != nil
+    while (!curr_node.next_node.nil?)
       curr_node = curr_node.next_node
       count += 1
     end
@@ -48,7 +48,7 @@ class LinkedList
     curr_node = @head
     return node if node.next.nil?
 
-    while(curr_node.next_node != nil)
+    while(!curr_node.next_node.nil?)
       curr_node = curr_node.next_node
     end
     curr_node
