@@ -22,10 +22,25 @@ class LinkedList
   def prepend(value)
     if @head.nil?
       @head = Node.new(value)
-    else
+      break
+    end
       curr_node = Node.new(value)
       curr_node.next = @head
       @head = curr_head
+  end
+
+  def size
+    if @head.nil?
+      count = 0
+      break
     end
+    
+    count = 1
+    curr_node = @head
+    while curr_node.next != nil
+      curr_node = curr_node.next
+      count += 1
+    end
+    count
   end
 end
