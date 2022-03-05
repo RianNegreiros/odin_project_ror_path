@@ -70,7 +70,7 @@ class LinkedList
     while(!curr_node.next_node.nil?)
       curr_node = curr_node.next_node
     end
-    curr_node.next = nil
+    curr_node.next_node = nil
   end
 
   def contains?(value)
@@ -78,6 +78,7 @@ class LinkedList
     while(!curr_node.nil?)
       return true if curr_node.value == value
       return false if !curr_node.next.nil?
+      curr_node = curr_node.next_node
     end
   end
 end
