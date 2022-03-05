@@ -17,4 +17,15 @@ class LinkedList
     end
     curr_node.next = Node.new(value, nil)
   end
+
+  # adds a new node containing value to the start of the list
+  def prepend(value)
+    if @head.nil?
+      @head = Node.new(value)
+    else
+      curr_node = Node.new(value)
+      curr_node.next = @head
+      @head = curr_head
+    end
+  end
 end
