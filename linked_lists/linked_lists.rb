@@ -93,11 +93,12 @@ class LinkedList
 
   def to_s
     curr_node = @head
-    puts curr_node
+    puts "( #{curr_node.value} ) ->"
 
     while(!curr_node.next_node.nil?)
-      puts curr_node
+      puts "( #{ curr_node.value} ) ->"
       curr_node = curr_node.next_node
     end
+    puts "#{curr_node.value}"
   end
 end
