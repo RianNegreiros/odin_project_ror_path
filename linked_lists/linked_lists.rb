@@ -20,21 +20,16 @@ class LinkedList
 
   # adds a new node containing value to the start of the list
   def prepend(value)
-    if @head.nil?
-      @head = Node.new(value)
-      break
-    end
+    return @head = Node.new(value) if @head.nil?
+
       curr_node = Node.new(value)
       curr_node.next = @head
       @head = curr_head
   end
 
   def size
-    if @head.nil?
-      count = 0
-      break
-    end
-    
+    return count = 0 if @head.nil?
+
     count = 1
     curr_node = @head
     while curr_node.next != nil
