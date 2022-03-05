@@ -53,4 +53,15 @@ class LinkedList
     end
     curr_node
   end
+
+  def at(index)
+    curr_node = @head
+    # Throw exception
+    return nil if node.next.nil?
+
+    index.times do 
+      curr_node = curr_node.next_node
+    end
+    curr_node
+  end
 end
