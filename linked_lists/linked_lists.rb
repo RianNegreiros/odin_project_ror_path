@@ -113,4 +113,12 @@ class LinkedList
     curr_node = Node.new(value)
     curr_node.next_node = @head
   end
+
+  def remove_at(index)
+    curr_node = @head
+    index.times do
+      curr_node = curr_node.next_node
+    end
+    curr_node.next_node = nil
+  end
 end
