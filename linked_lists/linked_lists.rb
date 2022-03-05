@@ -101,4 +101,16 @@ class LinkedList
     end
     print "#{curr_node.value}"
   end
+
+  def insert_at(value, index)
+    curr_node = @head
+    # Throw exception
+    return nil if node.next.nil?
+
+    index.times do 
+      curr_node = curr_node.next_node
+    end
+    curr_node = Node.new(value)
+    curr_node.next_node = @head
+  end
 end
