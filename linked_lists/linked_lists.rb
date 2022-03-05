@@ -47,7 +47,7 @@ class LinkedList
   def tail
     curr_node = @head
     return curr_node if node.next.nil?
-
+    
     while(!curr_node.next_node.nil?)
       curr_node = curr_node.next_node
     end
@@ -71,5 +71,13 @@ class LinkedList
       curr_node = curr_node.next_node
     end
     curr_node.next = nil
-  end 
+  end
+
+  def contains?(value)
+    curr_node = @head
+    while(!curr_node.nil?)
+      return true if curr_node.value == value
+      return false if !curr_node.next.nil?
+    end
+  end
 end
