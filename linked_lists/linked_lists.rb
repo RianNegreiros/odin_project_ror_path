@@ -90,4 +90,14 @@ class LinkedList
       curr_node = curr_node.next_node
     end
   end
+
+  def to_s
+    curr_node = @head
+    puts curr_node
+
+    while(!curr_node.next_node.nil?)
+      puts curr_node
+      curr_node = curr_node.next_node
+    end
+  end
 end
