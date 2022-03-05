@@ -43,4 +43,14 @@ class LinkedList
   def head
     @head
   end
+
+  def tail
+    curr_node = @head
+    return node if node.next.nil?
+
+    while(curr_node.next_node != nil)
+      curr_node = curr_node.next_node
+    end
+    curr_node
+  end
 end
