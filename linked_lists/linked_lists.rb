@@ -64,4 +64,12 @@ class LinkedList
     end
     curr_node
   end
+
+  def pop
+    curr_node = @head
+    while(!curr_node.next_node.nil?)
+      curr_node = curr_node.next_node
+    end
+    curr_node.next = nil
+  end 
 end
