@@ -27,6 +27,7 @@ class LinkedList
       @head = curr_head
   end
 
+  # returns the total number of nodes in the list
   def size
     count = 0
     return count if @head.nil?
@@ -40,10 +41,12 @@ class LinkedList
     count
   end
 
+  # returns the first node in the list
   def head
     @head
   end
 
+  # returns the last node in the list
   def tail
     curr_node = @head
     return curr_node if node.next_node.nil?
@@ -54,6 +57,7 @@ class LinkedList
     curr_node
   end
 
+  # returns the node at the given index
   def at(index)
     curr_node = @head
     # Throw exception
@@ -65,6 +69,7 @@ class LinkedList
     curr_node
   end
 
+  # removes the last element from the list
   def pop
     curr_node = @head
     while(!curr_node.next_node.nil?)
@@ -73,6 +78,7 @@ class LinkedList
     curr_node.next_node = nil
   end
 
+  # returns true if the passed in value is in the list and otherwise returns false.
   def contains?(value)
     curr_node = @head
     while(!curr_node.nil?)
@@ -82,6 +88,7 @@ class LinkedList
     end
   end
 
+  # returns the index of the node containing value, or nil if not found.
   def find(value)
     curr_node = @head
     while(!curr_node.nil?)
@@ -91,6 +98,7 @@ class LinkedList
     end
   end
 
+  # print Linked List objects to console
   def to_s
     curr_node = @head
     print "( #{curr_node.value} ) ->"
@@ -102,6 +110,7 @@ class LinkedList
     print "#{curr_node.value}"
   end
 
+  # inserts a new node with the provided value at the given index.
   def insert_at(value, index)
     curr_node = @head
     # Throw exception
@@ -114,6 +123,7 @@ class LinkedList
     curr_node.next_node = @head
   end
 
+  # removes the node at the given index.
   def remove_at(index)
     curr_node = @head
     index.times do
