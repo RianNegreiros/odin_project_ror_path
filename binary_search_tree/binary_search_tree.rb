@@ -44,4 +44,29 @@ class Tree
       prev_node.right = Node.new(value)
     end
   end
+
+  def delete(value, node = self.root)
+    return nil if @root.nil?
+
+    if value == node.data
+      return nil if !node.left && !node.right
+      return node.right if !node.left
+      return node.left if !node.right
+
+      tmp = node.right
+      while !tmp.left
+        tmp = tmp.left
+      end
+
+      node.data = tmp.value
+      node.right = delete(tmp.value, node.right)
+
+    elsif value < node.data
+      node.left = delete(value, node.left)
+      return node
+    else
+      node.right = delete(value, node.left)
+      return node
+    end
+  end
 end
