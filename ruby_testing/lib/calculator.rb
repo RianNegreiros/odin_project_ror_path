@@ -11,7 +11,7 @@ class Calculator
     numbers.reduce(:-)
   end
 
-  def divide(a, b)
-    a / b
+  def divide(*numbers)
+    numbers.reduce(:/)
   end
 end

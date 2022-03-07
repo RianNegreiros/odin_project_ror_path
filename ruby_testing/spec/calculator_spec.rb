@@ -39,6 +39,10 @@ describe Calculator do
       calculator = Calculator.new
       expect(calculator.divide(6, 2)).to eql(3)
     end
+    it "returns the division of more than two numbers" do
+      calculator = Calculator.new
+      expect(calculator.divide(12, 2, 2)).to eql(3)
+    end
   end
 
 end
