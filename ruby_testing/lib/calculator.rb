@@ -7,7 +7,7 @@ class Calculator
     numbers.reduce(:*)
   end
 
-  def subtract(a, b)
-    a - b
+  def subtract(*numbers)
+    numbers.reduce(:-)
   end
 end
