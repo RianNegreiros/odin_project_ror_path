@@ -12,6 +12,7 @@ class Tree
     @root = build_tree(array)
   end
 
+  # build balanced binary tree based on an array of data and return the root
   def build_tree(arr)
     return nil if arr.empty?
 
@@ -81,6 +82,7 @@ class Tree
     end
   end
 
+  # given block, yield each node, if no block is given return an array of values
   def level_order
     result = []
     queue = [@root]
@@ -166,5 +168,18 @@ class Tree
     return 1 if root.left.nil? && root.right.nil?
     return depth(root.right) + 1 if root.left.nil?
     return depth(root.left) + 1 if root.right.nil?
+  end
+
+  def balanced?(root = self.root)
+    return true if root.nil?
+
+    lh = height(root.left)
+    lr = height(root.right)
+
+    (lh - rh) <= 1 && balanced(root.left) && balanced(node.right) ? true : false
+  end
+
+  def rebalance(root = self.root)
+    @root = build_tree(inorder)
   end
 end
