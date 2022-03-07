@@ -18,5 +18,9 @@ describe Calculator do
       calculator = Calculator.new
       expect(calculator.multiply(2, 5, 7)).to eql(70)
     end
+    it "returns the subtraction of two numbers" do
+      calculator = Calculator.new
+      expect(calculator.subtract(6, 2)).to eql(4)
+    end
   end
 end
