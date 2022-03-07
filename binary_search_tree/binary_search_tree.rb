@@ -92,6 +92,6 @@ class Tree
       queue << curr_node.left if !curr_node.left.nil?
       queue << curr_node.right if !curr_node.right.nil?
     end
-    return result if block_given?
+    return result if !block_given?
   end
 end
