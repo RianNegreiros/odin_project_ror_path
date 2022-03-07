@@ -182,7 +182,14 @@ class Tree
   def rebalance(root = self.root)
     @root = build_tree(inorder)
   end
+
+  def pretty_print(node = @root, prefix = '', is_left = true)
+    pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
+    puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
+    pretty_print(node.left, "#{prefix}#{is_left ? '    ' : '│   '}", true) if node.left
+  end
 end
+
 
 tree = Tree.build_tree(Array.new(15) { rand(1..100) })
 tree.balanced?
