@@ -1,4 +1,4 @@
-require './lib/calculator'
+require './lib/calculator.rb'
 
 describe Calculator do
   describe "#add" do
@@ -10,6 +10,9 @@ describe Calculator do
       calculator = Calculator.new
       expect(calculator.add(2, 5, 7)).to eql(14)
     end
+  end
+
+  describe "#multiply" do
     it "returns the multiplication of two numbers" do
       calculator = Calculator.new
       expect(calculator.multiply(2, 5)).to eql(10)
@@ -18,6 +21,9 @@ describe Calculator do
       calculator = Calculator.new
       expect(calculator.multiply(2, 5, 7)).to eql(70)
     end
+  end
+
+  describe "#subtract" do
     it "returns the subtraction of two numbers" do
       calculator = Calculator.new
       expect(calculator.subtract(6, 2)).to eql(4)
@@ -27,4 +33,5 @@ describe Calculator do
       expect(calculator.subtract(6, 2, 2)).to eql(2)
     end
   end
+
 end
