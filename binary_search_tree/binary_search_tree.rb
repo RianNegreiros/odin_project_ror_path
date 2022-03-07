@@ -94,4 +94,22 @@ class Tree
     end
     return result if !block_given?
   end
+
+  def inorder(node = self.root)
+    nodes = []
+
+    if !node.left.nil?
+      yield node if block_given?
+      inorder(node.left)
+    end
+
+    nodes << node.data
+
+    if !node.right.nil?
+      yield node if block_given?
+      inorder(node.right)
+    end
+
+    return nodes if !block_given?
+  end
 end
