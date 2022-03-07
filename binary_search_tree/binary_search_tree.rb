@@ -144,7 +144,20 @@ class Tree
     end
     
     nodes << node.data
-    
+
     return nodes if !block_given?
+  end
+
+  def height(node)
+    return 0 if node.nil?
+
+    lheight = height(node.left)
+    rheight = height(node.right)
+
+    if lheight > rheight
+      lheight + 1
+    else
+      rheight + 1
+    end
   end
 end
