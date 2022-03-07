@@ -14,5 +14,9 @@ describe Calculator do
       calculator = Calculator.new
       expect(calculator.multiply(2, 5)).to eql(10)
     end
+    it "returns the multiplication of more than two numbers" do
+      calculator = Calculator.new
+      expect(calculator.multiply(2, 5, 7)).to eql(70)
+    end
   end
 end
