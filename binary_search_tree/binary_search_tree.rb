@@ -183,3 +183,16 @@ class Tree
     @root = build_tree(inorder)
   end
 end
+
+tree = Tree.build_tree(Array.new(15) { rand(1..100) })
+tree.balanced?
+tree.preorder
+tree.postorder
+tree.inorder
+100.times { tree.insert(rand(1..100)) }
+tree.balanced?
+tree.rebalance
+tree.balanced?
+tree.preorder
+tree.postorder
+tree.inorder
