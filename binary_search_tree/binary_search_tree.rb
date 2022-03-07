@@ -112,4 +112,21 @@ class Tree
 
     return nodes if !block_given?
   end
+
+  def preorder(node = self.root)
+    nodes = []
+    nodes << node.data
+
+    if !node.left.nil?
+      yield node if block_given?
+      inorder(node.left)
+    end
+
+    if !node.right.nil?
+      yield node if block_given?
+      inorder(node.right)
+    end
+
+    return nodes if !block_given?
+  end
 end
