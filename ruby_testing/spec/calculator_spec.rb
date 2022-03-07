@@ -34,4 +34,11 @@ describe Calculator do
     end
   end
 
+  describe "#divide" do
+    it "returns the division of two numbers" do
+      calculator = Calculator.new
+      expect(calculator.divide(6, 2)).to eql(3)
+    end
+  end
+
 end
