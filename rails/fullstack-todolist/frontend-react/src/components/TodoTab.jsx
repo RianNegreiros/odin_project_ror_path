@@ -7,13 +7,13 @@ const TodoTab = ({ todos, onTodoRemoval, onTodoToggle }) => {
     <>
       <List
       dataSource={todos}
-      renderItem={(todo) => {
+      renderItem={(todo) => (
         <TodoItem>
           todo={todo}
           onTodoToggle={onTodoToggle}
           onTodoRemoval={onTodoRemoval}
         </TodoItem>
-      }}
+      )}
       pagination={{
         position: 'bottom',
         pageSize: 10
