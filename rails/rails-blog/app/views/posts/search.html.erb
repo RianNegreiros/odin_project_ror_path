@@ -1,0 +1,11 @@
+<h2 class="text-muted">
+  <% if @posts.any? %>
+    <%= @posts.count %> results founded:
+  <% else %>
+    Any result founded.
+  <% end %>
+</h2>
+
+<% @posts.each do |post| %>
+  <%= render post %>
+<% end %>

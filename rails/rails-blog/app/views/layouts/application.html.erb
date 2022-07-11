@@ -11,6 +11,43 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="bg-danger text-white text-center mb-4 p-4">
+      <%= link_to root_path, class: 'text-white' do %>
+        <h1 class="display-4">Rails Blog</h1>
+      <% end %>
+      <p>Blog application built with Ruby On Rails framework for The Odin Project.</p>
+    </div>
+
+    <div class="container">
+      <% flash.each do |type, message| %>
+        <div class="alert alert-<%= type == 'alert' ? 'danger' : 'success' %> alert-dismissible fade show" role="alert">
+          <%= message %>
+
+          <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <% end %>
+
+      <div class="row">
+        <div class="col-4 offset-8">
+          <div class="search">
+            <%= form_with url: search_posts_path, method: :get, local: true, class: "form-inline" do |form| %>
+            <div class="form-group mx-3 mb-3">
+              <%= form.search_field :q, class: 'form-control', required: true, placeholder: 'Search' %>
+            </div>
+
+              <%= form.submit 'Search', class: 'btn btn-primary mb-3', data: { disable_with: 'Searching...' } %>
+              <% end %>
+          </div>
+        </div>
+      </div>
+
+      <%= yield %>
+    </div>
+
+    <footer class="bg-primary text-white text-center mt-5 p-4">
+      Copyright Rian Negreiros <%= Date.current.year %>.
+    </footer>
   </body>
 </html>
