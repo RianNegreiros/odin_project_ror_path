@@ -12,3 +12,7 @@ import "../src/application.css"
 
 Rails.start()
 ActiveStorage.start()
+
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+});
