@@ -91,3 +91,18 @@ class knight
       path.reverse
     end
 end
+
+def knight_moves(start, target)
+  knight = Knight.new(start, target)
+  knight.build_map
+  path = knight.map_path(target)
+  puts "You made it in #{path.length - 1} moves! Here's your path:"
+  knight.print_path(path).each { |move| puts move.to_s }
+end
+
+### Examples
+
+knight_moves([3,3], [4,3])
+knight_moves([3,3], [0,0])
+knight_moves([0,0], [7,0])
+knight_moves([2,6], [2,6])
