@@ -172,6 +172,8 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
+    record_tag_helper (1.0.1)
+      actionview (>= 5)
     regexp_parser (2.7.0)
     responders (3.1.0)
       actionpack (>= 5.2)
@@ -184,6 +186,9 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    simple_form (5.2.0)
+      actionpack (>= 5.2)
+      activemodel (>= 5.2)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -235,7 +240,9 @@ DEPENDENCIES
   jbuilder
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.2)
+  record_tag_helper (~> 1.0)
   selenium-webdriver
+  simple_form (~> 5.2)
   sprockets-rails
   sqlite3 (~> 1.4)
   stimulus-rails
