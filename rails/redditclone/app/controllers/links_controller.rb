@@ -1,5 +1,9 @@
 class LinksController < ApplicationController
   before_action :set_link, only: %i[ show edit update destroy ]
+<<<<<<< HEAD
+=======
+  before_action :authenticate_user!, except: [:index, :show]
+>>>>>>> project_reddit_clone
 
   # GET /links or /links.json
   def index
@@ -12,7 +16,11 @@ class LinksController < ApplicationController
 
   # GET /links/new
   def new
+<<<<<<< HEAD
     @link = Link.new
+=======
+    @link = current_user.links.build
+>>>>>>> project_reddit_clone
   end
 
   # GET /links/1/edit
@@ -21,6 +29,7 @@ class LinksController < ApplicationController
 
   # POST /links or /links.json
   def create
+<<<<<<< HEAD
     @link = Link.new(link_params)
 
     respond_to do |format|
@@ -29,6 +38,14 @@ class LinksController < ApplicationController
         format.json { render :show, status: :created, location: @link }
       else
         format.html { render :new, status: :unprocessable_entity }
+=======
+    @link = current_user.links.build(link_params)respond_to do |format|
+      if @link.save
+        format.html { redirect_to @link, notice: 'Link was successfully created.' }
+        format.json { render :show, status: :created, location: @link }
+      else
+        format.html { render :new }
+>>>>>>> project_reddit_clone
         format.json { render json: @link.errors, status: :unprocessable_entity }
       end
     end
@@ -57,6 +74,21 @@ class LinksController < ApplicationController
     end
   end
 
+<<<<<<< HEAD
+=======
+  def upvote
+    @link = Link.find(params[:id])
+    @link.upvote_by current_user
+    redirect_back fallback_location: root_path
+  end
+
+  def downvote
+    @link = Link.find(params[:id])
+    @link.downvote_by current_user
+    redirect_back fallback_location: root_path
+  end
+
+>>>>>>> project_reddit_clone
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_link
