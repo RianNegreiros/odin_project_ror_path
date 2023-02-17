@@ -5,7 +5,7 @@ Files are a great way to save and reload a game, so we’ll give it a shot here 
 ## Assignment
 You will be building a simple command line Hangman game where one player plays against the computer, but a bit more advanced. If you’re unfamiliar with how Hangman works, see [Wikipedia](https://en.wikipedia.org/wiki/Hangman_(game)).
 
-```text
+```md
  1.Download the 5desk.txt dictionary file from https://scrapmaker.com/.
  
  2.When a new game is started, your script should load in the dictionary and randomly select a word between 5 and 12 characters long for the secret word.
