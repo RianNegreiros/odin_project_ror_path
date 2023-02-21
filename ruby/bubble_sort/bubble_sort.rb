@@ -1,16 +1,18 @@
-def bubble_sort(arr)
-  loop do
-    swapped = false
-
-    (arr.length - 1).times do |i|
-      if arr[i] > arr[i + 1]
-        arr[i], arr[i + 1] = arr[i + 1], arr[i]
-        swapped = true
+def bubble_sort(array)
+  # Loop through each element in the array, comparing it with the next element and swapping if necessary
+  for i in 0..array.length-2
+    for j in 0..array.length-i-2
+      if array[j] > array[j+1]
+        temp = array[j]
+        array[j] = array[j+1]
+        array[j+1] = temp
       end
     end
-    break unless swapped
   end
-  arr
+  
+  array
 end
 
-p bubble_sort([4,3,78,2,0,2])
+array = [5, 1, 4, 2, 8]
+sorted_array = bubble_sort(array)
+puts sorted_array
