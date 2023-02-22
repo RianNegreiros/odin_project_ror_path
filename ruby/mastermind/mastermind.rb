@@ -76,3 +76,6 @@ class Mastermind
     puts "Sorry, you ran out of turns. The code was #{@code}. Better luck next time!"
   end
 end
+
+game = Mastermind.new
+game.play
