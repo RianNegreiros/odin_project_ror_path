@@ -1,6 +1,6 @@
 # Project: Recursion
 
-### Warmup: Fibonacci
+## Warmup: Fibonacci
 
 The [Fibonacci Sequence](http://en.wikipedia.org/wiki/Fibonacci_number), which sums each number with the one before it, is a great example of a problem that can be solved recursively.
 
@@ -28,11 +28,11 @@ It can be a bit strange to wrap your head around, but just remember you’re “
 The first step is to actually understand what the merge sort algorithm is doing:
 
 1. Check out this [introductory video from Harvard’s CS50x course.](https://youtu.be/Ns7tGNbtvV4)
-    
+
 2. Check out this more [detailed video explanation by David J. Malan](https://www.youtube.com/watch?v=uEbdK2CG_B8&feature=youtu.be&t=1h2m) (watch only until 1:14:00).
-    
+
 3. [Merge Sort – How it Works part 1](https://www.youtube.com/watch?v=OAsokGNa18k) and [Merge Sort – How it Works part II](http://www.youtube.com/watch?v=nNhpFO9CmPs) on YouTube give you a more formal look at this problem if you’re still unclear.
-  
+
 4. (Optional) Play with this [Merge Sort Visualizer](https://www.hackerearth.com/practice/algorithms/sorting/merge-sort/visualize/) to get a better feel for exactly what is happening during a Merge Sort.
 
 ### Assignment 2
@@ -53,4 +53,3 @@ This section contains helpful links to other content. It isn’t required, so co
 
 - Another look at [merge sort](http://www.sorting-algorithms.com/merge-sort)
 - For more attempts at recursion try the first 5 problems in [Project Euler](https://projecteuler.net/problems)
-
