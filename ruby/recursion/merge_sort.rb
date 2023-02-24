@@ -1,36 +1,39 @@
-def merge_sort(arr)
-  return arr if arr.length <= 1
-
-  mid = arr.length / 2
-  arr1 = merge_sort(arr.slice(0, mid))
-  arr2 = merge_sort(arr.slice(mid, arr.length - mid))
-
-  arr = []
-  i = 0
-  j = 0
-  while i < arr1.length && j < arr2.length
-    el1 = arr1[i]
-    el2 = arr2[j]
-
-    if el1 <= el2
-      arr << el1
-      i += 1
-    else
-      arr << el2
-      j += 1
-    end
-  end
-
-  while i < arr1.length
-    arr << arr1[i]
-    i += 1
-  end
-
-  while j < arr2.length
-    arr << arr2[j]
-    j += 1
-  end
-  arr
+def merge_sort(array)
+  # If the array is empty or contains only one element, it is already sorted
+  return array if array.length <= 1
+  
+  # Divide the array into two halves
+  mid = array.length / 2
+  left_half = array[0...mid]
+  right_half = array[mid..-1]
+  
+  # Recursively sort the left and right halves
+  sorted_left_half = merge_sort(left_half)
+  sorted_right_half = merge_sort(right_half)
+  
+  # Merge the two sorted halves
+  merge(sorted_left_half, sorted_right_half)
 end
 
-puts merge_sort([2,9,3,8,4,8,8,2])
+def merge(left_half, right_half)
+  sorted_array = []
+  
+  # While there are still elements in both halves
+  while !left_half.empty? && !right_half.empty?
+    if left_half.first <= right_half.first
+      sorted_array << left_half.shift
+    else
+      sorted_array << right_half.shift
+    end
+  end
+  
+  # Add any remaining elements from the left or right half
+  sorted_array += left_half
+  sorted_array += right_half
+  
+  sorted_array
+end
+
+array = [5, 2, 8, 4, 1, 9, 6, 3, 7]
+sorted_array = merge_sort(array)
+puts sorted_array.inspect #=> [1, 2, 3, 4, 5, 6, 7, 8, 9]
