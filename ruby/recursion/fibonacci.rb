@@ -1,21 +1,12 @@
-def fibs(n)
-  i, j = 0, 1
-  seq = []
-  while i <= n do
-    seq << i
-    i, j = j, i + j
+def fibonacci(n)
+  if n <= 1
+    return n
+  else
+    return fibonacci(n-1) + fibonacci(n-2)
   end
-  seq << i
 end
 
-puts fibs(8)
-
-def fibs_rec(n)
-  return [0, 1] if n == 2
-
-  seq = fibs_rec(n - 1)
-
-  seq << seq[-2] + seq[-1]
-end
-
-puts fibs_rec(8)
+# Example usage
+puts fibonacci(0) # 0
+puts fibonacci(1) # 1
+puts fibonacci(10) # 55
