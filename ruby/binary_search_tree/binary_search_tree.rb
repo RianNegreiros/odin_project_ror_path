@@ -1,15 +1,19 @@
 class Node
+  attr_accessor :data, :left_child, :right_child
+
   def initialize(data)
     @data = data
-    @left_chid = nil
-    @right_chil = nil
+    @left_child = nil
+    @right_child = nil
   end
 end
 
 class Tree
+  attr_reader :root
+
   def initialize(arr)
     @array = arr.sort.uniq
-    @root = build_tree(array)
+    @root = build_tree(@array)
   end
 
   # build balanced binary tree based on an array of data and return the root
@@ -18,14 +22,14 @@ class Tree
 
     mid = arr.length / 2
 
-    root = Node(arr[mid])
-    root.left = build_tree(arr.slice(0, mid))
-    root.right = build_tree(arr.slice(mid+1, arr.length))
+    root = Node.new(arr[mid])
+    root.left_child = build_tree(arr[0...mid])
+    root.right_child = build_tree(arr[mid+1..-1])
     root
   end
 
   def insert(value)
-    return Node.new(value) if @root.nil?
+    return @root = Node.new(value) if @root.nil?
 
     curr_node = @root
     prev_node = @root
@@ -33,52 +37,52 @@ class Tree
     while !curr_node.nil?
       prev_node = curr_node
       if value < curr_node.data
-        curr_node = curr_node.left
+        curr_node = curr_node.left_child
       else
-        curr_node = curr_node.right
+        curr_node = curr_node.right_child
       end
     end
 
     if value < prev_node.data
-      prev_node.left = Node.new(value)
+      prev_node.left_child = Node.new(value)
     else
-      prev_node.right = Node.new(value)
+      prev_node.right_child = Node.new(value)
     end
   end
 
-  def delete(value, node = self.root)
+  def delete(value, node = @root)
     return nil if @root.nil?
 
     if value == node.data
-      return nil if !node.left && !node.right
-      return node.right if !node.left
-      return node.left if !node.right
+      return nil if !node.left_child && !node.right_child
+      return node.right_child if !node.left_child
+      return node.left_child if !node.right_child
 
-      tmp = node.right
-      while !tmp.left
-        tmp = tmp.left
+      tmp = node.right_child
+      while tmp.left_child
+        tmp = tmp.left_child
       end
 
-      node.data = tmp.value
-      node.right = delete(tmp.value, node.right)
+      node.data = tmp.data
+      node.right_child = delete(tmp.data, node.right_child)
 
     elsif value < node.data
-      node.left = delete(value, node.left)
-      return node
+      node.left_child = delete(value, node.left_child)
     else
-      node.right = delete(value, node.left)
-      return node
+      node.right_child = delete(value, node.right_child)
     end
+
+    node
   end
 
-  def find(value, node = self.root)
-    return nil if @root.data.nil?
-    return @root if @root.data == value
+  def find(value, node = @root)
+    return nil if node.nil?
+    return node if node.data == value
 
     if value < node.data
-      find(value, node.left)
-    elsif value > node.data
-      find(value, node.right)
+      find(value, node.left_child)
+    else
+      find(value, node.right_child)
     end
   end
 
@@ -86,110 +90,86 @@ class Tree
   def level_order
     result = []
     queue = [@root]
-    
-    while queue.length
-      curr_node = queue.shift()
+
+    while !queue.empty?
+      curr_node = queue.shift
       block_given? ? yield(curr_node) : result << curr_node.data
-      
-      queue << curr_node.left if !curr_node.left.nil?
-      queue << curr_node.right if !curr_node.right.nil?
+
+      queue << curr_node.left_child if curr_node.left_child
+      queue << curr_node.right_child if curr_node.right_child
     end
-    return result if !block_given?
+
+    result unless block_given?
   end
 
-  def inorder(node = self.root)
+  def inorder(node = @root, nodes = [])
+    return nodes unless node
+
+    inorder(node.left_child, nodes)
+    block_given? ? yield(node) : nodes << node.data
+    inorder(node.right_child, nodes)
+
+    nodes unless block_given?
+  end
+
+  def preorder(node = @root, nodes = [])
+    return nodes unless node
+
+    block_given? ? yield(node) : nodes << node.data
+    preorder(node.left_child, nodes)
+    preorder(node.right_child, nodes)
+
+    nodes unless block_given?
+  end
+
+  def postorder(node = @root, &block)
+    return [] if node.nil?
+  
     nodes = []
-
-    if !node.left.nil?
-      yield node if block_given?
-      inorder(node.left)
-    end
-
+    nodes += postorder(node.left, &block) if node.left
+    nodes += postorder(node.right, &block) if node.right
     nodes << node.data
-
-    if !node.right.nil?
-      yield node if block_given?
-      inorder(node.right)
-    end
-
-    return nodes if !block_given?
+    block.call(node) if block_given?
+    nodes
   end
-
-  def preorder(node = self.root)
-    nodes = []
-    nodes << node.data
-
-    if !node.left.nil?
-      yield node if block_given?
-      inorder(node.left)
-    end
-
-    if !node.right.nil?
-      yield node if block_given?
-      inorder(node.right)
-    end
-
-    return nodes if !block_given?
-  end
-
-  def postorder(node = self.root)
-    nodes = []
-    
-    if !node.left.nil?
-      yield node if block_given?
-      inorder(node.left)
-    end
-    
-    if !node.right.nil?
-      yield node if block_given?
-      inorder(node.right)
-    end
-    
-    nodes << node.data
-
-    return nodes if !block_given?
-  end
-
+  
   def height(node)
     return 0 if node.nil?
-
-    lheight = height(node.left)
-    rheight = height(node.right)
-
-    if lheight > rheight
-      lheight + 1
-    else
-      rheight + 1
-    end
+  
+    [height(node.left), height(node.right)].max + 1
   end
-
-  def depth(root = self.root)
-    return 0 if root.nil?
-    return 1 if root.left.nil? && root.right.nil?
-    return depth(root.right) + 1 if root.left.nil?
-    return depth(root.left) + 1 if root.right.nil?
+  
+  def depth(node = @root)
+    return 0 if node.nil?
+  
+    left_depth = depth(node.left)
+    right_depth = depth(node.right)
+  
+    [left_depth, right_depth].max + 1
   end
-
-  def balanced?(root = self.root)
-    return true if root.nil?
-
-    lh = height(root.left)
-    lr = height(root.right)
-
-    (lh - rh) <= 1 && balanced(root.left) && balanced(node.right) ? true : false
+  
+  def balanced?(node = @root)
+    return true if node.nil?
+  
+    lh = height(node.left)
+    rh = height(node.right)
+  
+    (lh - rh).abs <= 1 && balanced?(node.left) && balanced?(node.right)
   end
-
-  def rebalance(root = self.root)
+  
+  def rebalance
     @root = build_tree(inorder)
   end
-
+  
   def pretty_print(node = @root, prefix = '', is_left = true)
-    pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
+    return if node.nil?
+  
+    pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false)
     puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
-    pretty_print(node.left, "#{prefix}#{is_left ? '    ' : '│   '}", true) if node.left
+    pretty_print(node.left, "#{prefix}#{is_left ? '    ' : '│   '}", true)
   end
-end
 
+end
 
 tree = Tree.build_tree(Array.new(15) { rand(1..100) })
 tree.balanced?
